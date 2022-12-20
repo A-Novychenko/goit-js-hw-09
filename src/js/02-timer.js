@@ -33,17 +33,17 @@ function onStartBtnClick() {
   timerId = setInterval(() => {
     dateCounter += 1000;
     let timeLeft = selectedDate - currentDate - dateCounter;
-    console.log('interval', timeLeft);
 
     const { days, hours, minutes, seconds } = convertMs(timeLeft);
+
     daysValue.textContent = days;
-    hoursValue.textContent = hours;
-    minutesValue.textContent = minutes;
-    secondsValue.textContent = seconds;
+    hoursValue.textContent = hours.toString().padStart(2, '0');
+    minutesValue.textContent = minutes.toString().padStart(2, '0');
+    secondsValue.textContent = seconds.toString().padStart(2, '0');
   }, 1000);
 }
 
-function dateHandle(selectedDates) {
+function dateHandle(selectedDate) {
   const dateInFuture = selectedDate > currentDate;
 
   if (!dateInFuture) {
