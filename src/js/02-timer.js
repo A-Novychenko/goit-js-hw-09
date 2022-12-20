@@ -7,7 +7,7 @@ const hoursValue = document.querySelector('[data-hours]');
 const minutesValue = document.querySelector('[data-minutes]');
 const secondsValue = document.querySelector('[data-seconds]');
 
-const currentTime = Date.now();
+const currentDate = Date.now();
 let selectedDate = 0;
 let dateCounter = 1000;
 
@@ -32,7 +32,7 @@ function onStartBtnClick() {
   startBtn.setAttribute('disabled', 'enabled');
   timerId = setInterval(() => {
     dateCounter += 1000;
-    let timeLeft = selectedDate - currentTime - dateCounter;
+    let timeLeft = selectedDate - currentDate - dateCounter;
     console.log('interval', timeLeft);
 
     const { days, hours, minutes, seconds } = convertMs(timeLeft);
@@ -44,7 +44,7 @@ function onStartBtnClick() {
 }
 
 function dateHandle(selectedDates) {
-  const dateInFuture = selectedDate > currentTime;
+  const dateInFuture = selectedDate > currentDate;
 
   if (!dateInFuture) {
     alert('Please choose a date in the future');
